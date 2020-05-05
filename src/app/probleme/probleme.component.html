@@ -1,5 +1,7 @@
+<br/>
+
 <div class="container">
-    <br/>
+
     <div class="card">
     <div class="card-header text-white bg-secondary">
     <!-- L'en-tête ici -->
@@ -11,13 +13,37 @@
     
  
 
+    <div class="card-text">
+        <form class="form-horizontal"
+            novalidate
+            (ngSubmit)="save()"
+            [formGroup]="problemeForm"> 
+            <div class="form-group">
+                <label for="prenomId" class="col-md-2 col-form-label text-right">Prénom: </label>
+                <div class="col-md-10">
 
+                    <input class="form-control"
+                    id="prenomId"
+                    type="text"
+                    placeholder="Votre prénom ici (obligatoire)"
+                    formControlName="nomProbleme"
+                    [ngClass]="{'is-valid': (problemeForm.get('nomProbleme').touched ||
+                    problemeForm.get('nomProbleme').dirty) &&
+                    (problemeForm.get('nomProbleme').valid),
+                    'is-invalid': (problemeForm.get('nomProbleme').touched ||
+                    problemeForm.get('nomProbleme').dirty) &&
+                    (!problemeForm.get('nomProbleme').valid )}"/> 
+
+                </div>
+            </div>
+        </form>
+    </div> 
    
     
     <div class="card-footer">
     <!-- Bouton save avec l'icone ici -->
     <!-- Utiliser la balise suivante pour l’icone SAVE -->
-    <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> sauvegarder</button>
+    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> sauvegarder</button>
     
     </div>
     </div>

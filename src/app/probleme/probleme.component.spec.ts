@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProblemeComponent } from './probleme.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
@@ -30,19 +30,43 @@ describe('ProblemeComponent', () => {
 
   it('#1 | Zone PRÉNOM invalide avec 2 caractères',() =>{ 
     let zone = component.problemeForm.controls['nomProbleme'];
-    
-    expect(zone.valid).toBeTruthy();
+    zone.setValue('a'.repeat(2));
+    expect(zone.valid).toBeFalsy();
   });
+
   it('#2 | Zone PRÉNOM valide avec 3 caractères',() =>{ 
     let zone = component.problemeForm.controls['nomProbleme'];
-    
-    expect(zone.valid).toBeTruthy();
+    zone.setValue('a'.repeat(3));
+    expect(zone.valid).toBeFalsy();
   });
+    
   it('#3 | Zone PRÉNOM valide avec 200 caractères',() =>{ 
     let zone = component.problemeForm.controls['nomProbleme'];
- 
+    zone.setValue('a'.repeat(200));
     expect(zone.valid).toBeTruthy();
+
   });
+
+
+
+
+it('#4 | Zone PRÉNOM invalide avec aucune valeur',() =>{ 
+  let errors = {};
+  let zone = component.problemeForm.get('nomProbleme');
+  zone.setValue('a'.repeat(0));
+  errors =  zone.errors || {};
+  expect(errors['required']).toBeTruthy();
+});
+
+it('#5 | Zone PRÉNOM valide avec 10 espaces ', () => {
+
+ });
+
+it('#6 | Zone PRÉNOM valide avec 2 espaces et 1 caractère', () => {
+    
+}); 
+
+ 
 
 
 
