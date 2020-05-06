@@ -11,12 +11,12 @@ export class ProblemeComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void {
-    this.problemeForm = this.fb.group({
-        nomProbleme: ["",[Validators.required,Validators.minLength(5)]],
+    ngOnInit(): void {
+      this.problemeForm = this.fb.group({
+          nomProbleme: ["",[Validators.required,Validators.minLength(3)]],
 
 
-    });
-  }
+      });
+    }
   save(){}
 }
