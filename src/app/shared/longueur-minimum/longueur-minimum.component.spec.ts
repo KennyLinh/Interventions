@@ -1,7 +1,22 @@
 import { longueurMinimum } from "./longueur-minimum.component";
 import { AbstractControl } from '@angular/forms';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ProblemeComponent } from 'src/app/probleme/probleme.component';
 
 describe('longueur zone Validator',() =>{
+    
+  let component: ProblemeComponent;
+  let fixture: ComponentFixture<ProblemeComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule ], //ajouté
+      declarations: [ ProblemeComponent ]
+    })
+    .compileComponents();
+  }));
+
     it('#7 | une chaîne avec 10 espaces est invalide',()=>{
         // Préparer une variable pour manipuler le validateur
         let validator = longueurMinimum.longueurMinimum(10);
